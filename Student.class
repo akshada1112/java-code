@@ -1,0 +1,56 @@
+// Source code is decompiled from a .class file using FernFlower decompiler (from Intellij IDEA).
+class Student {
+   private String name;
+   private int rollNumber;
+   private int mark1;
+   private int mark2;
+   private int mark3;
+   private int mark4;
+   private int mark5;
+
+   public Student(String var1, int var2, int var3, int var4, int var5, int var6, int var7) {
+      if (this.validMark(var3) && this.validMark(var4) && this.validMark(var5) && this.validMark(var6) && this.validMark(var7)) {
+         this.name = var1;
+         this.rollNumber = var2;
+         this.mark1 = var3;
+         this.mark2 = var4;
+         this.mark3 = var5;
+         this.mark4 = var6;
+         this.mark5 = var7;
+      } else {
+         throw new IllegalArgumentException("Marks must be between 0 and 100.");
+      }
+   }
+
+   private boolean validMark(int var1) {
+      return var1 >= 0 && var1 <= 100;
+   }
+
+   public int calculateTotal() {
+      return this.mark1 + this.mark2 + this.mark3 + this.mark4 + this.mark5;
+   }
+
+   public double calculatePercentage() {
+      return (double)this.calculateTotal() / (double)5.0F;
+   }
+
+   public String calculateResult() {
+      return this.mark1 >= 40 && this.mark2 >= 40 && this.mark3 >= 40 && this.mark4 >= 40 && this.mark5 >= 40 ? "PASS" : "FAIL";
+   }
+
+   public String getName() {
+      return this.name;
+   }
+
+   public int getRollNumber() {
+      return this.rollNumber;
+   }
+
+   public void displayResult() {
+      System.out.println("Student Name: " + this.name);
+      System.out.println("Roll Number: " + this.rollNumber);
+      System.out.println("Total Marks: " + this.calculateTotal() + "/500");
+      System.out.println("Percentage: " + this.calculatePercentage() + "%");
+      System.out.println("Result: " + this.calculateResult());
+   }
+}

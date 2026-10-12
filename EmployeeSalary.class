@@ -1,0 +1,31 @@
+// Source code is decompiled from a .class file using FernFlower decompiler (from Intellij IDEA).
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class EmployeeSalary {
+   public EmployeeSalary() {
+   }
+
+   public static void main(String[] var0) {
+      Scanner var1 = new Scanner(System.in);
+
+      try {
+         System.out.print("Name: ");
+         String var2 = var1.nextLine();
+         System.out.print("Employee ID: ");
+         int var3 = var1.nextInt();
+         System.out.print("Monthly Salary: ");
+         double var4 = var1.nextDouble();
+         System.out.print("Performance Rating: ");
+         int var6 = var1.nextInt();
+         Employee var7 = new Employee(var2, var3, var4, var6);
+         var7.displaySalary();
+      } catch (IllegalArgumentException var8) {
+         System.out.println("Invalid input: " + var8.getMessage());
+      } catch (InputMismatchException var9) {
+         System.out.println("Please enter valid numeric values.");
+      }
+
+      var1.close();
+   }
+}

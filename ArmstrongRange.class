@@ -1,0 +1,64 @@
+// Source code is decompiled from a .class file using FernFlower decompiler (from Intellij IDEA).
+import java.util.Scanner;
+
+public class ArmstrongRange {
+   public ArmstrongRange() {
+   }
+
+   static int countDigits(int var0) {
+      int var1 = 0;
+
+      do {
+         ++var1;
+         var0 /= 10;
+      } while(var0 > 0);
+
+      return var1;
+   }
+
+   static int calculatePower(int var0, int var1) {
+      int var2 = 1;
+
+      for(int var3 = 1; var3 <= var1; ++var3) {
+         var2 *= var0;
+      }
+
+      return var2;
+   }
+
+   static boolean isArmstrong(int var0) {
+      int var1 = var0;
+      int var2 = countDigits(var0);
+
+      int var3;
+      for(var3 = 0; var0 > 0; var0 /= 10) {
+         int var4 = var0 % 10;
+         var3 += calculatePower(var4, var2);
+      }
+
+      return var3 == var1;
+   }
+
+   public static void main(String[] var0) {
+      Scanner var1 = new Scanner(System.in);
+      System.out.print("Start: ");
+      int var2 = var1.nextInt();
+      System.out.print("End: ");
+      int var3 = var1.nextInt();
+      if (var2 >= 1 && var3 >= 1 && var2 <= var3) {
+         System.out.print("Armstrong numbers: ");
+
+         for(int var4 = var2; var4 <= var3; ++var4) {
+            if (isArmstrong(var4)) {
+               System.out.print(var4 + " ");
+            }
+         }
+
+         System.out.println();
+      } else {
+         System.out.println("Invalid range.");
+      }
+
+      var1.close();
+   }
+}

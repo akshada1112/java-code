@@ -1,0 +1,50 @@
+// Source code is decompiled from a .class file using FernFlower decompiler (from Intellij IDEA).
+class Employee {
+   private String name;
+   private int employeeId;
+   private double monthlySalary;
+
+   public Employee(String var1, int var2, double var3) {
+      if (!Double.isNaN(var3) && !Double.isInfinite(var3) && !(var3 < (double)0.0F)) {
+         this.name = var1;
+         this.employeeId = var2;
+         this.monthlySalary = var3;
+      } else {
+         throw new IllegalArgumentException("Monthly salary cannot be negative or invalid.");
+      }
+   }
+
+   public double calculateAnnualSalary() {
+      return this.monthlySalary * (double)12.0F;
+   }
+
+   public String getName() {
+      return this.name;
+   }
+
+   public int getEmployeeId() {
+      return this.employeeId;
+   }
+
+   public void compareWith(Employee var1) {
+      double var2 = this.calculateAnnualSalary();
+      double var4 = var1.calculateAnnualSalary();
+      if (var2 > var4) {
+         System.out.println(this.name + " earns more than " + var1.name + ".");
+      } else if (var2 < var4) {
+         System.out.println(var1.name + " earns more than " + this.name + ".");
+      } else {
+         System.out.println(this.name + " and " + var1.name + " have equal annual salaries.");
+      }
+
+   }
+
+   public Employee getHigherPaidEmployee(Employee var1) {
+      return this.calculateAnnualSalary() >= var1.calculateAnnualSalary() ? this : var1;
+   }
+
+   public void displayDetails() {
+      System.out.println("Highest-paid employee: " + this.name);
+      System.out.println("Annual Salary: " + this.calculateAnnualSalary());
+   }
+}

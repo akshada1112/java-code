@@ -1,0 +1,49 @@
+// Source code is decompiled from a .class file using FernFlower decompiler (from Intellij IDEA).
+class BankAccount {
+   private String accountHolder;
+   private long accountNumber;
+   private double balance;
+
+   public BankAccount(String var1, long var2, double var4) {
+      if (!(var4 < (double)0.0F) && !Double.isNaN(var4) && !Double.isInfinite(var4)) {
+         this.accountHolder = var1;
+         this.accountNumber = var2;
+         this.balance = var4;
+      } else {
+         throw new IllegalArgumentException("Initial balance cannot be negative or invalid.");
+      }
+   }
+
+   public boolean deposit(double var1) {
+      if (!(var1 <= (double)0.0F) && !Double.isNaN(var1) && !Double.isInfinite(var1) && !Double.isInfinite(this.balance + var1)) {
+         this.balance += var1;
+         System.out.println("Deposit Successful");
+         return true;
+      } else {
+         System.out.println("Deposit Failed");
+         return false;
+      }
+   }
+
+   public boolean withdraw(double var1) {
+      if (!(var1 <= (double)0.0F) && !Double.isNaN(var1) && !Double.isInfinite(var1)) {
+         if (var1 > this.balance) {
+            System.out.println("Withdrawal Failed: Insufficient balance");
+            return false;
+         } else {
+            this.balance -= var1;
+            System.out.println("Withdrawal Successful");
+            return true;
+         }
+      } else {
+         System.out.println("Withdrawal Failed: Invalid amount");
+         return false;
+      }
+   }
+
+   public void displayAccount() {
+      System.out.println("Account Holder: " + this.accountHolder);
+      System.out.println("Account Number: " + this.accountNumber);
+      System.out.println("Final Balance: " + this.balance);
+   }
+}

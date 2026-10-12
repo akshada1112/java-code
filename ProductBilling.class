@@ -1,0 +1,31 @@
+// Source code is decompiled from a .class file using FernFlower decompiler (from Intellij IDEA).
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class ProductBilling {
+   public ProductBilling() {
+   }
+
+   public static void main(String[] var0) {
+      Scanner var1 = new Scanner(System.in);
+
+      try {
+         System.out.print("Product: ");
+         String var2 = var1.nextLine();
+         System.out.print("Product ID: ");
+         int var3 = var1.nextInt();
+         System.out.print("Unit Price: ");
+         double var4 = var1.nextDouble();
+         System.out.print("Quantity: ");
+         int var6 = var1.nextInt();
+         Product var7 = new Product(var2, var3, var4, var6);
+         var7.displayBill();
+      } catch (IllegalArgumentException var8) {
+         System.out.println("Invalid input: " + var8.getMessage());
+      } catch (InputMismatchException var9) {
+         System.out.println("Please enter valid numeric values.");
+      }
+
+      var1.close();
+   }
+}
